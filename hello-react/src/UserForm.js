@@ -7,6 +7,7 @@ class UserForm extends Component {
       username: 'toto',
       isActive: true,
     };
+    this.handleChange = this.handleChange.bind(this);
   }
   handleChange(event) {
     const stateKey = event.target.name;
