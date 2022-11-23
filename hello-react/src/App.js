@@ -10,6 +10,11 @@
 //   return divEl;
 // }
 
+import Clock from './Clock';
+import Counter from './Counter';
+import Hello from './Hello';
+import UserForm from './UserForm';
+
 // import React from 'react';
 
 // function App() {
@@ -21,10 +26,30 @@
 //   );
 // }
 
+// function App() {
+//   return (
+//     <div className="App">
+//       Hello <span id="name">Romain</span> il est <span>{(new Date()).toLocaleTimeString()}</span>
+//     </div>
+//   );
+// }
+
 function App() {
+  // console.log('App renders');
   return (
     <div className="App">
-      Hello <span id="name">Romain</span> il est <span>{(new Date()).toLocaleTimeString()}</span>
+      <Hello />
+      <Hello name="Romain" age={37} isActive />
+      <Clock />
+      {/* si la valeur de count vient du parent, donc passe par les props
+         -> Composant Controlé
+      */}
+      {/* <Counter count={count} onIncrement={() => count++} /> */}
+      {/* si la valeur de count est interne, donc définie dans le state de Counter
+         -> Composant Non Controlé (plus simple à utiliser mais moins réutilisable)
+      */}
+      <Counter />
+      <UserForm />
     </div>
   );
 }
