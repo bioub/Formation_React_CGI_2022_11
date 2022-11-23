@@ -1,11 +1,33 @@
-import { Component } from "react";
+import { Component } from 'react';
 
 class ExMultiStateButton extends Component {
-  render() {
-    // les props sont accessibles via this.props
-    return <button className="ExMultiStateButton">
+  constructor(props) {
+    super();
 
-    </button>
+    if (!props.items || !props.items.length) {
+      throw new Error('items is undefined or empty');
+    }
+
+    this.state = {
+      value: props.items[0],
+    };
+  }
+
+  handleClick = () => {
+    const { value } = this.state;
+    const { items } = this.props;
+    const currentIndex = items.indexOf(value);
+    const newValue = items[(currentIndex + 1) % items.length];
+
+    this.setState({
+      value: newValue,
+    });
+  };
+
+  render() {
+    const { value } = this.state;
+    // les props sont accessibles via this.props
+    return <button className="ExMultiStateButton" onClick={this.handleClick}>{value}</button>;
   }
 }
 

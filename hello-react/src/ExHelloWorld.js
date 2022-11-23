@@ -1,12 +1,24 @@
 import { Component } from "react";
 
 class ExHelloWorld extends Component {
+  // ES2022 - class properties
+  state = {
+    name: 'Romain',
+  };
+
+  handleChange = (event) => {
+    this.setState({
+      name: event.target.value,
+    });
+  };
+
   render() {
+    const { name } = this.state;
     return <div className="ExHelloWorld">
       <label>Name:</label>
-      <input type="text" placeholder="Enter a name here" />
+      <input type="text" placeholder="Enter a name here" value={name} onChange={this.handleChange} />
       <hr />
-      <h1>Hello !</h1>
+      <h1>Hello {name} !</h1>
     </div>
   }
 }
