@@ -12,6 +12,8 @@
 
 import Clock from './Clock';
 import Counter from './Counter';
+import ExHelloWorld from './ExHelloWorld';
+import ExMultiStateButton from './ExMultiStateButton';
 import Hello from './Hello';
 import UserForm from './UserForm';
 
@@ -50,6 +52,8 @@ function App() {
       */}
       <Counter />
       <UserForm />
+      <ExHelloWorld />
+      <ExMultiStateButton items={['Rouge', 'Vert', 'Bleu']} />
     </div>
   );
 }
