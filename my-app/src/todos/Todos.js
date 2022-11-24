@@ -19,10 +19,14 @@ function Todos() {
     setTodos([ ...todos, { id: Math.random(), title: newTodo, completed: false } ]); // ES2015 SPREAD Operator (... indique qu'on veut le contenu du tableau)
   };
 
+  const handleDelete = (item) => {
+    setTodos(todos.filter((todo) => todo.id !== item.id));
+  };
+
   return (
     <div className="Todos">
       <TodoForm newTodo={newTodo} onNewTodoChange={setNewTodo} onAdd={handleAdd} />
-      <TodosList items={todos} />
+      <TodosList items={todos} onDelete={handleDelete} />
     </div>
   );
 }

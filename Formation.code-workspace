@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "my-app"
+		},
+		{
+			"path": "redux"
 		}
 	],
 	"settings": {}

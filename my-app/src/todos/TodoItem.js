@@ -1,9 +1,9 @@
-function TodoItem({ item }) {
+function TodoItem({ item, onDelete }) {
   return (
     <div className="TodoItem">
       <input type="checkbox" defaultChecked={item.completed} />
       <span>{item.title}</span>
-      <button>-</button>
+      <button onClick={() => onDelete(item)}>-</button>
     </div>
   );
 }
