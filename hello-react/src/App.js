@@ -10,7 +10,8 @@
 //   return divEl;
 // }
 
-import Clock from './Clock';
+import { useState } from 'react';
+import Clock from './ClockClass';
 import Counter from './Counter';
 import ExHelloWorld from './ExHelloWorld';
 import ExMultiStateButton from './ExMultiStateButton';
@@ -39,6 +40,12 @@ import UserForm from './UserForm';
 
 function App() {
   // console.log('App renders');
+  const [color, setColor] = useState('Vert');
+
+  const handleValueChange = (newColor) => {
+    setColor(newColor);
+  };
+
   return (
     <div className="App">
       <Hello />
@@ -56,9 +63,10 @@ function App() {
       <UserForm />
       <ExHelloWorld />
       <ExHelloWorld />
-      <ExMultiStateButton items={['Rouge', 'Vert', 'Bleu']} />
+      <ExMultiStateButton items={['Rouge', 'Vert', 'Bleu']} value={color} onValueChange={handleValueChange} />
 
-      <Select />
+      <Select items={['Rouge', 'Vert', 'Bleu']} value={color} onValueChange={handleValueChange} />
+      <p>Couleur sélectionnée : {color}</p>
     </div>
   );
 }

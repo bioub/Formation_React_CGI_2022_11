@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-class Clock extends Component {
+class ClockClass extends Component {
   constructor() {
     super();
     this.state = {
@@ -20,11 +20,11 @@ class Clock extends Component {
     }, 1000);
   }
   render() {
-    // console.log('Clock renders');
+    // console.log('ClockClass renders');
     
     const { now, format } = this.state;
-    return <div className="Clock">{now.toLocaleTimeString()} au format {format}</div>;
+    return <div className="ClockClass">{now.toLocaleTimeString()} au format {format}</div>;
   }
 }
 
-export default Clock;
+export default ClockClass;
