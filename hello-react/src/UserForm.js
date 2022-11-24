@@ -13,7 +13,7 @@ class UserForm extends Component {
     const stateKey = event.target.name;
     const stateValue = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
     this.setState({
-      [stateKey]: stateValue,
+      [stateKey]: stateValue, // ES2015 Computed Property name
     });
   }
   render() {

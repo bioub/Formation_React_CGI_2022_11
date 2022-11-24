@@ -1,0 +1,30 @@
+.value {
+  box-sizing: border-box;
+  background-color: white;
+  max-width: 300px;
+  user-select: none;
+  cursor: pointer;
+  border: 1px solid gray;
+  padding: 5px;
+  border-radius: 2px; 
+}
+
+.menu {
+  box-sizing: border-box;
+  max-width: 300px;
+  user-select: none;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 2px; 
+
+  transition: opacity 400ms ease;
+}
+
+.item {
+  padding: 5px;
+}
+
+.hidden {
+  opacity: 0;
+}

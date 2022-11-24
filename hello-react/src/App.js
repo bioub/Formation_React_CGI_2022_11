@@ -15,6 +15,7 @@ import Counter from './Counter';
 import ExHelloWorld from './ExHelloWorld';
 import ExMultiStateButton from './ExMultiStateButton';
 import Hello from './Hello';
+import Select from './Select';
 import UserForm from './UserForm';
 
 // import React from 'react';
@@ -41,6 +42,7 @@ function App() {
   return (
     <div className="App">
       <Hello />
+      {/* React.createElement(Hello, { name: 'Romain', age: 37, isActive: true }) */}
       <Hello name="Romain" age={37} isActive />
       <Clock />
       {/* si la valeur de count vient du parent, donc passe par les props
@@ -53,7 +55,10 @@ function App() {
       <Counter />
       <UserForm />
       <ExHelloWorld />
+      <ExHelloWorld />
       <ExMultiStateButton items={['Rouge', 'Vert', 'Bleu']} />
+
+      <Select />
     </div>
   );
 }
