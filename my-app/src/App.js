@@ -1,17 +1,14 @@
-import CounterContainer from "./counter/CounterContainer";
-import Todos from "./todos/Todos";
-import User from "./user/User";
+import { Link, Outlet } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Todos />
-
-      {/* <CounterContainer />
-      <CounterContainer />
-      <CounterContainer /> */}
-
-      <User />
+      <nav>
+        <Link to="/">Home (Demo Counter)</Link>
+        <Link to="/todos">Todos</Link>
+        <Link to="/users">Users</Link>
+      </nav>
+      <Outlet />
     </div>
   );
 }

@@ -56,3 +56,29 @@ const initialState = {
 
 - Dans le composant `Todos.js` remplacer les `useState` par `useSelector`
 - Dans le composant `Todos.js` remplacer `setTodos` et `setNewTodo` par des appels à `dispatch` (importé avec `useDispatch`)
+
+## Exercice Router
+
+Remplacer le code du composant User par :
+
+```jsx
+<div className="User">
+  <nav>
+    <Link to="add">New</Link>
+    <Link to="1">Toto</Link>
+    <Link to="2">Titi</Link>
+    <Link to="3">Tata</Link>
+  </nav>
+  <Outlet />
+</div>
+```
+
+Pensez à importer `Link` et `Outlet`
+
+Créer un nouveau composant `UserDetails`
+
+Configurer ensuite le router pour que :
+
+- sur `/users` le composant `User` s'affiche seul
+- sur `/users/new` le composant `User` s'affiche ainsi que `UserForm` dans sont `Outlet`
+- sur `/users/1`, `/users/2`, `/users/3` le composant `User` s'affiche ainsi que `UserDetails` dans sont `Outlet`, pour créer des URLs avec des paramètres dans le router ont peut déclarer le path `:nomDuParam`, ex: `path: ':userId'`
