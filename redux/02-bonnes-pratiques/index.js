@@ -1,8 +1,8 @@
-import { counterIncrement, counterSetStep } from "./actions.js";
-import { configureStore } from "./configureStore.js";
-import Counter from "./Counter.js";
-import Profile from "./Profile.js";
-import UserForm from "./UserForm.js";
+import { counterIncrement, counterSetStep } from "./store/actions.js";
+import { configureStore } from "./store/configureStore.js";
+import Counter from "./components/Counter.js";
+import Profile from "./components/Profile.js";
+import UserForm from "./components/UserForm.js";
 
 const store = configureStore();
 

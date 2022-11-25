@@ -23,7 +23,6 @@ const initialState = {
 const userReducer = rtk.createReducer(initialState.user, (builder) => {
   builder.addCase(userSetName, (state, action) => {
     state.name = action.payload;
-    return state;
   });
 });
 
@@ -31,11 +30,9 @@ const counterReducer = rtk.createReducer(initialState.counter, (builder) => {
   builder
     .addCase(counterIncrement, (state, action) => {
       state.count = state.count + state.step;
-      return state;
     })
     .addCase(counterSetStep, (state, action) => {
       state.step = action.payload;
-      return state;
     });
 });
 

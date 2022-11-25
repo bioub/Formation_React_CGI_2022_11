@@ -1,7 +1,7 @@
-import './Select.css';
+import "./Select.css";
 
-import React, { Component, useState } from 'react';
-import classNames from 'classnames';
+import React, { Component, useEffect, useRef, useState } from "react";
+import classNames from "classnames";
 
 // class Select extends Component {
 //   state = {
@@ -234,6 +234,7 @@ b[key='0']   b[key='1']
 
 function Select({ items = [], value = items[0], onValueChange = () => {} }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const hostRef = useRef();
 
   const handleValueClick = () => {
     setMenuOpen(!menuOpen);
@@ -242,7 +243,20 @@ function Select({ items = [], value = items[0], onValueChange = () => {} }) {
   const handleItemClick = (item) => {
     onValueChange(item);
     setMenuOpen(false);
-  }
+  };
+
+  useEffect(() => {
+    const callback = (event) => {
+      if (!hostRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("click", callback);
+    return () => {
+      window.removeEventListener("click", callback);
+    };
+  }, []);
 
   const itemEls = items.map((item) => (
     <div key={item} className="item" onClick={() => handleItemClick(item)}>
@@ -251,11 +265,11 @@ function Select({ items = [], value = items[0], onValueChange = () => {} }) {
   ));
 
   return (
-    <div className="Select">
+    <div className="Select" ref={hostRef}>
       <div className="value" onClick={handleValueClick}>
         {value}
       </div>
-      {menuOpen && <div className="menu" >{itemEls}</div>}
+      {menuOpen && <div className="menu">{itemEls}</div>}
     </div>
   );
 }

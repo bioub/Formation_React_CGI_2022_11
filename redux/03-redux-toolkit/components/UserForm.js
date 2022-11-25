@@ -1,7 +1,7 @@
-import { userSetName } from "./actions.js";
-import { nameSelector } from "./selectors.js";
+import { userSetName } from "../store/actions.js";
+import { nameSelector } from "../store/selectors.js";
 
-function Profile(store) {
+function UserForm(store) {
   const initialState = store.getState();
   let _name = nameSelector(initialState);
   store.subscribe(() => {
@@ -9,14 +9,14 @@ function Profile(store) {
     const name = nameSelector(state);
 
     if (name !== _name) {
-      console.log('Profile new name', name);
+      console.log('UserForm new name', name);
       _name = name;
     }
   });
 
   setTimeout(() => {
-    store.dispatch(userSetName('Titi'));
-  }, 4000);
+    store.dispatch(userSetName('Toto'));
+  }, 1000)
 }
 
-export default Profile;
+export default UserForm;

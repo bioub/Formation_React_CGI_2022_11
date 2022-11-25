@@ -1,10 +1,10 @@
-import { counterIncrement, counterSetStep } from "./actions.js";
-import reducer from "./reducers.js";
+import { counterIncrement, counterSetStep } from "./store/actions.js";
+import reducer from "./store/reducers.js";
 import rtk from '@reduxjs/toolkit'
 
-import Counter from "./Counter.js";
-import Profile from "./Profile.js";
-import UserForm from "./UserForm.js";
+import Counter from "./components/Counter.js";
+import Profile from "./components/Profile.js";
+import UserForm from "./components/UserForm.js";
 
 const store = rtk.configureStore({
   reducer: reducer,

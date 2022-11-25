@@ -1,4 +1,4 @@
-import { countSelector, stepSelector } from "./selectors.js";
+import { countSelector, stepSelector } from "../store/selectors.js";
 
 function Counter(store) {
   const initialState = store.getState();
