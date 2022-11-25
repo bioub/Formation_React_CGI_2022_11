@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Exercice React Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+On va déplacer le state de Todos dans le store Redux.
 
-## Available Scripts
+Dans `src/store/actions.js` prévoir 2 nouvelles actions :
 
-In the project directory, you can run:
+- pour mettre à jour la valeur saisie dans le champs (ex: `setNewTodo`)
+- pour ajouter une todos au tableau (ex: `addTodo`)
 
-### `npm start`
+Dans `src/store/reducer.js`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- modifier `initialState` pour inclure les valeurs liées à Todos :
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```js
+const initialState = {
+  user: {
+    name: "Romain",
+  },
+  counter: {
+    count: 0,
+    step: 1,
+  },
+  todos: {
+    items: [
+    { id: Math.random(), title: 'ABC', completed: false },
+    { id: Math.random(), title: 'DEF', completed: true },
+  ],
+    newTodo: 'XYZ'
+  }
+};
+```
 
-### `npm test`
+- Créer un nouveau reducer `todosReducer` et l'enregistrer en fin de fichier dans la variable `reducer` (associé à la clé `todos` du state).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Dans ce reducer traiter les actions créés précédemment.
 
-### `npm run build`
+- Tester avec l'extension Redux DevTools que les actions suivantes fonctionnent :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```js
+{
+  type: 'SET_NEW_TODO', // ou autre string définie dans le fichier actions.js
+  payload: 'Acheter du pain'
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+{
+  type: 'ADD_TODO', // ou autre string définie dans le fichier actions.js
+  payload: {
+    id: 0.345634653464,
+    title: 'Acheter du pain',
+    completed: false,
+  }
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Ecrire un ou plusieurs selecteur dans `src/store/selector.js` pour retrouver les valeurs du state Redux.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Dans le composant `Todos.js` remplacer les `useState` par `useSelector`
+- Dans le composant `Todos.js` remplacer `setTodos` et `setNewTodo` par des appels à `dispatch` (importé avec `useDispatch`)
