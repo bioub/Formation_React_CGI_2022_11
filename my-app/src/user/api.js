@@ -10,7 +10,7 @@ export function fetchUsers() {
 }
 
 export function fetchUserById(id) {
-
+return axios.get('https://jsonplaceholder.typicode.com/users/'+id)
 }
 
 

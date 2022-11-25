@@ -3,17 +3,20 @@ import {
   counterSetStep,
   todoAdd,
   todoSetNewTodo,
+  userFetchById,
+  userFetchByIdSuccess,
   userFetchUsers,
   userFetchUsersSuccess,
   userSetName,
 } from "./actions.js";
-import { createReducer, nanoid } from "@reduxjs/toolkit";
+import { createReducer, isAnyOf, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
   user: {
     name: "Romain",
     items: [],
     loading: false,
+    currentUser: {}
   },
   counter: {
     count: 0,
@@ -33,12 +36,18 @@ export const userReducer = createReducer(initialState.user, (builder) => {
     .addCase(userSetName, (state, action) => {
       state.name = action.payload;
     })
+    // .addCase(isAnyOf(userFetchUsers, userFetchById), (state, action) => {
+    //   state.loading = true;
+    // })
     .addCase(userFetchUsers, (state, action) => {
       state.loading = true;
     })
     .addCase(userFetchUsersSuccess, (state, action) => {
       state.loading = false;
       state.items = action.payload;
+    })
+    .addCase(userFetchByIdSuccess, (state, action) => {
+      state.currentUser = action.payload;
     });
 });
 

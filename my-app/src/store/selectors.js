@@ -17,3 +17,14 @@ export function todosSelector(state) {
 export function userSelector(state) {
   return state.user;
 }
+
+
+export function userByIdSelector(id) {
+  return function (state) {
+    return state.user.items.find((item) => item.id === Number(id));
+  }
+}
+
+export function currentUserSelector(state) {
+  return state.user.currentUser;
+}

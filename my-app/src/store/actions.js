@@ -16,3 +16,6 @@ export const todoSetNewTodo = createAction('@todos/setNewTodo');
 
 export const userFetchUsers = createAction("USER_FETCH_USERS");
 export const userFetchUsersSuccess = createAction("USER_FETCH_USERS_SUCCESS");
+
+export const userFetchById = createAction("USER_FETCH_BY_ID");
+export const userFetchByIdSuccess = createAction("USER_FETCH_BY_ID_SUCCESS");
