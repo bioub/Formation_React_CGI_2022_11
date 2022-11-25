@@ -13,3 +13,6 @@ export const todoAdd = createAction('@todos/addTodo', (title) => {
   }
 });
 export const todoSetNewTodo = createAction('@todos/setNewTodo');
+
+export const userFetchUsers = createAction("USER_FETCH_USERS");
+export const userFetchUsersSuccess = createAction("USER_FETCH_USERS_SUCCESS");

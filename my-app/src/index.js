@@ -5,7 +5,7 @@ import App from "./App";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { counterReducer, todosReducer } from "./store/reducers";
-import { userReducer } from "./store/slices";
+import { userReducer } from "./store/reducers";
 import { createBrowserRouter, Link, Outlet, RouterProvider } from "react-router-dom";
 import Home from "./counter/Home";
 import Todos from "./todos/Todos";
@@ -54,10 +54,10 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       {/* <App /> */}
       <RouterProvider router={router} />
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

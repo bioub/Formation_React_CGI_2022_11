@@ -13,3 +13,7 @@ export function nameSelector(state) {
 export function todosSelector(state) {
   return state.todos;
 }
+
+export function userSelector(state) {
+  return state.user;
+}
