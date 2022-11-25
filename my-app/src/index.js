@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { configureStore } from '@reduxjs/toolkit'
-import reducer from './store/reducers';
 import { Provider } from 'react-redux'
+import { counterReducer, todosReducer } from './store/reducers';
+import { userReducer } from './store/slices';
 
 const store = configureStore({
-  reducer: reducer,
+  reducer: {
+    user: userReducer,
+    todos: todosReducer,
+    counter: counterReducer,
+  },
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

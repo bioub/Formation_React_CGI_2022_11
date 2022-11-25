@@ -1,32 +1,31 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { todoAdd, todoSetNewTodo } from '../store/actions';
+import { todosSelector } from '../store/selectors';
 import TodoForm from './TodoForm';
 import TodosList from './TodosList';
 
 function Todos() {
-  const [todos, setTodos] = useState([
-    { id: Math.random(), title: 'ABC', completed: false },
-    { id: Math.random(), title: 'DEF', completed: true },
-  ]);
-  const [newTodo, setNewTodo] = useState('XYZ');
+  const { items, newTodo } = useSelector(todosSelector);
+  const dispatch = useDispatch();
+
+  const handleNewTodoChange = (value) => {
+    dispatch(todoSetNewTodo(value));
+  };
+
 
   const handleAdd = () => {
-    // ajout dans le tableau muable (mutable en anglais)
-    // ne marche pas avec les hooks (aurait fonctionné avec setState)
-    // todos.push({ id: Math.random(), title: newTodo, completed: false });
-    // setTodos(todos);
-
-    // ajout dans le tableau immuable (immutable en anglais)
-    setTodos([ ...todos, { id: Math.random(), title: newTodo, completed: false } ]); // ES2015 SPREAD Operator (... indique qu'on veut le contenu du tableau)
+    dispatch(todoAdd(newTodo))
   };
 
   const handleDelete = (item) => {
-    setTodos(todos.filter((todo) => todo.id !== item.id));
+
   };
 
   return (
     <div className="Todos">
-      <TodoForm newTodo={newTodo} onNewTodoChange={setNewTodo} onAdd={handleAdd} />
-      <TodosList items={todos} onDelete={handleDelete} />
+      <TodoForm newTodo={newTodo} onNewTodoChange={handleNewTodoChange} onAdd={handleAdd} />
+      <TodosList items={items} onDelete={handleDelete} />
     </div>
   );
 }

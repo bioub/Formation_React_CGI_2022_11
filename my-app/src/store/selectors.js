@@ -9,3 +9,7 @@ export function stepSelector(state) {
 export function nameSelector(state) {
   return state.user.name;
 }
+
+export function todosSelector(state) {
+  return state.todos;
+}
