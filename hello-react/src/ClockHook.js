@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 
-function ClockHook() {
-  const [format, setFormat] = useState('HH:mm:ss');
+function ClockHook({ format, delay }) {
   const [now, setNow] = useState(new Date());
 
   useEffect(() => {
-    setInterval(() => {
+    const _interval = setInterval(() => {
       setNow(new Date());
-    }, 1000);
-  }, []); // function + empty array === componentDidMount
+    }, delay);
+    return () => {
+      clearInterval(_interval);
+    };
+  }, [delay]);
+  // function + empty array === componentDidMount + componentWillMount
+  // function + undefined === componentDidMount + (componentDidUpdate + componentWillUpdate)*render + componentWillMount
+  // function + array with value(s) === componentDidMount + (componentDidUpdate + componentWillUpdate)*render(if value(s) change) + componentWillMount
 
   return <div className="ClockHook">{now.toLocaleTimeString()} au format {format}</div>;
 }

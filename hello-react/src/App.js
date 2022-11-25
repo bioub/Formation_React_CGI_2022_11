@@ -12,6 +12,7 @@
 
 import { useState } from 'react';
 import Clock from './ClockClass';
+import ClockWithControls from './ClockWithControls';
 import Counter from './Counter';
 import ExHelloWorld from './ExHelloWorld';
 import ExMultiStateButton from './ExMultiStateButton';
@@ -51,7 +52,7 @@ function App() {
       <Hello />
       {/* React.createElement(Hello, { name: 'Romain', age: 37, isActive: true }) */}
       <Hello name="Romain" age={37} isActive />
-      <Clock />
+      {/* <Clock /> */}
       {/* si la valeur de count vient du parent, donc passe par les props
          -> Composant Controlé
       */}
@@ -67,6 +68,8 @@ function App() {
 
       <Select items={['Rouge', 'Vert', 'Bleu']} value={color} onValueChange={handleValueChange} />
       <p>Couleur sélectionnée : {color}</p>
+
+      <ClockWithControls />
     </div>
   );
 }
