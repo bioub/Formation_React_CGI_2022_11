@@ -10,6 +10,8 @@ import { createBrowserRouter, Link, Outlet, RouterProvider } from "react-router-
 import Home from "./counter/Home";
 import Todos from "./todos/Todos";
 import User from "./user/User";
+import UserForm from "./user/UserForm";
+import UserDetails from "./user/UserDetails";
 
 const store = configureStore({
   reducer: {
@@ -34,7 +36,17 @@ const router = createBrowserRouter([
       },
       {
         path: 'users',
-        element: <User />
+        element: <User />,
+        children: [
+          {
+            path: 'new',
+            element: <UserForm />
+          },
+          {
+            path: ':userId',
+            element: <UserDetails />
+          }
+        ]
       },
     ]
   },

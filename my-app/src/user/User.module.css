@@ -1,0 +1,16 @@
+.host {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.menu {
+  background-color: yellow;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu a {
+  text-align: center;
+}
